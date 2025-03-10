@@ -21,7 +21,7 @@ term=sorted([re.sub(r"^[-]+", "", s)for s in list(set(temp_term)) ])
 
 
 
-with open("output.txt", "w", encoding="utf-8", errors="ignore") as file:
+with open("daftar kata bahasa indonesia.txt", "w", encoding="utf-8", errors="ignore") as file:
     for item in term:
         file.write(item + "\n")
 
