@@ -12,12 +12,14 @@ with open("Kamus-Besar-Bahasa-Indonesia.pdf", "rb") as file:
         teks=page.extract_text()  # Ekstrak teks dari setiap halaman
         halaman+=1
         print(halaman)
-        hasil = re.sub(r"[^a-zA-Z\s\-]", "", teks)
-        for kata in hasil.split():
+        hasil = re.sub(r"[^a-zA-Z\s\-]", "", teks) ## hapus simbol kecuali spasi dan -
+        for kata in hasil.split():## pisah berdasarkan spasi
             temp_term.append(kata)
             #print(kata)
     
-term=sorted(list(set(temp_term)))    
+term=sorted([re.sub(r"^[-]+", "", s)for s in list(set(temp_term)) ])   
+
+
 
 with open("output.txt", "w", encoding="utf-8", errors="ignore") as file:
     for item in term:
